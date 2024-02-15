@@ -1,27 +1,29 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+interface Thumnail{
+  url: string,
+  createdAt: string,
+  title: string,
+}
 
 export default function Home() {
-  const buttonStyle ={
-    width:"300px",
+  const thumnails: Thumnail[] = [
+    {
+      url:"",
+      createdAt: "2/15 09:00",
+      title:""
 
-  }
-  return (
-  <Card sx={{ minWidth: 275 }} style={buttonStyle}>
+    }
+  ]
+  const card =(
+    <Card sx={{ width: 275 }} >
     <CardContent>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         Word of the Day
@@ -41,5 +43,16 @@ export default function Home() {
     <CardActions>
       <Button size="small">Learn More</Button>
     </CardActions>
-  </Card>);
+  </Card>
+  )
+
+  return (
+      <>
+      <div className="h-screen w-screen flex justify-center items-center">
+        <div className="flex">
+          {list.map((x, i) => card)}
+        </div>
+      </div>
+  </>
+  );
 }
