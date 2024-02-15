@@ -29,7 +29,7 @@ export default function Home() {
         Word of the Day
       </Typography>
       <Typography variant="h5" component="div">
-        be{bull}nev{bull}o{bull}lent
+        <YouTubeIcon/>
       </Typography>
       <Typography sx={{ mb: 1.5 }} color="text.secondary">
         adjective
@@ -50,7 +50,8 @@ export default function Home() {
       <>
       <div className="h-screen w-screen flex justify-center items-center">
         <div className="flex">
-          {list.map((x, i) => card)}
+          {/* {list.map((x, i) => card)} */}
+          {card}
         </div>
       </div>
   </>
