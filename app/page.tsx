@@ -46,12 +46,15 @@ export default function Home() {
   </Card>
   )
 
+  const list =[
+    1,2,3
+  ]
+
   return (
       <>
       <div className="h-screen w-screen flex justify-center items-center">
         <div className="flex">
-          {/* {list.map((x, i) => card)} */}
-          {card}
+          { list.map((x, i) => card)}
         </div>
       </div>
   </>
