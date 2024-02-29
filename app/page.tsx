@@ -13,6 +13,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from "next/link";
+import  * as CSS from "csstype";
 
 enum LiveStatus{
   Schedule=0,
@@ -74,16 +75,35 @@ export default function Home() {
     {name:"Concept",link: "concept"},
   ];
 
+  const textStyle = () => {
+    const divStyle: CSS.Properties={
+      textAlign: 'center',
+    }
+    return divStyle
+  }
+
   const liveStatusComponent=(liveStatus:LiveStatus)=>{
     switch(liveStatus){
       case LiveStatus.Schedule:
-        return<p className="bg-blue-600">配信予定</p>;
+        return<>
+        <div style={textStyle()}>
+        <p className="bg-blue-600">配信予定</p>
+        </div>
+        </>
 
       case LiveStatus.Live:
-        return<p className="bg-red-300">配信中</p>;
+        return<>
+        <div style={textStyle()}>
+        <p className="bg-red-300">配信中</p>
+        </div>
+        </>
 
         case LiveStatus.Exit:
-          return<p className="bg-gray-300">配信終了</p>;
+          return<>
+          <div style={textStyle()}>
+          <p className="bg-gray-300">配信終了</p>
+          </div>
+          </>
       default:
         return;
       }
