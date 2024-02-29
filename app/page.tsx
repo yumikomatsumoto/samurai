@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Typography from '@mui/material/Typography';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -44,7 +43,7 @@ export default function Home() {
     },
 
     {
-      url:"http://img.youtube.com/vi/AuQov5W65LY/mqdefault.jpg",
+      url:"http://img.youtube.com/vi/jHRlw1e3YEg/mqdefault.jpg",
       createdAt:"2/16 11:00",
       title:"逆転裁判4",
       liveStatus: LiveStatus.Live,
@@ -53,7 +52,7 @@ export default function Home() {
     },
 
     {
-      url: "http://img.youtube.com/vi/jHRlw1e3YEg/mqdefault.jpg",
+      url: "http://img.youtube.com/vi/PFjnhRsJgHU/mqdefault.jpg",
       createdAt: "2/17 18:00",
       title: "私の酸素を吸わないでほしい ／ Vo.羽渦ミウネル",
       liveStatus: LiveStatus.Exit,
@@ -70,9 +69,9 @@ export default function Home() {
     );
   }
 
-  const options=[
-    "Concept",
-    "Videos",
+  const menuOptions=[
+    {name:"VOMS.net", link: "/" },
+    {name:"Concept",link: "concept"},
   ];
 
   const liveStatusComponent=(liveStatus:LiveStatus)=>{
@@ -99,7 +98,7 @@ export default function Home() {
       <div className="relative">
         <Typography variant="body2">
           <img
-          src={'${thumnail.url'}
+          src={`${thumnail.url}`}
           alt="サムネイル"
           />
         </Typography>
@@ -133,47 +132,73 @@ const handleClose=()=>{
 
   return (
       <>
-      <div className="h-screen w-screen">
-        <div className="flex justify-center">
-          <TitleComponent>
+      <div className="h-screen w-screen"
+      style={{
+        backgroundImage:"url(/background.jpeg)",backgroundSize:"cover", resize:"both"
+      }}>
+
+      <div className="flex justify-center">
+        <TitleComponent>
             <h2 className="text-8xl font-extrabold">VOMS.net</h2>
           </TitleComponent>
-
           <div>
-            {/* <IconButton
-              aria-label="more"
-              id="long-button"
-              aria-controls={open ? 'long-menu' : undefined}
-              aria-expaded={open ? 'true': undefined}
-              aria-haspopup="true"
-              onClick={handleClick}
-              >
-            </IconButton>
-            { <Menu
-            id="long-menu"
-            MenuListProps={{
-              'aria-labelledby':'long-button',
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            PaperProps{{
-              style:{
-                maxheight: 48*4.5,
-                width:'20ch',
-              },
-            }}
-            >
-              {options.map(option)=>(
-                 <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                 {option}
-               </MenuItem>
-              )}
-            </Menu>} */}
+          <div className="flex items-center p-20px justify-end">
+              <Link href="/">#voms_project</Link>
+              <div className="pl-20">
+                  <span>share</span>
+                <TwitterIcon color="primary" className="ml-2"/>
+                </div>
+      <IconButton
+       className="ml-28"
+        aria-label="more"
+        id="long-button"
+        aria-controls={open ? 'long-menu' : undefined}
+        aria-expanded={open ? 'true' : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <MenuIcon sx={{fontSize: 48}}/>
+      </IconButton>
+      <Menu
+        id="long-menu"
+        MenuListProps={{
+          'aria-labelledby': 'long-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          style: {
+            maxHeight: 48 * 4.5,
+            width: '20ch',
+          },
+        }}
+      >
+        {menuOptions.map((option)=>(
+          <MenuItem
+          key={option.name}
+          onClick={handleClose}>
+
+            <Link href={option.link}>{option.name}</Link>
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
           </div>
+
+          <TitleComponent>
+            <h3 className="font-extrabold">VTuber “VOMS Project” Official</h3>
+          </TitleComponent>
+
+          <TitleComponent>
+            <h3 className="text-2xl font-extrabold">Live Schedule</h3>
+          </TitleComponent>
         </div>
-        <div className="flex justify-center items-center">
-          {thumnails.map((thumnail, index) => cardComponent(thumnail,index))}
+
+
+          {/* TODO:メニューを実装する */}
+        <div className="flex justify-center">
+          {thumnails.map(cardComponent)}
         </div>
       </div>
   </>
